@@ -2,30 +2,42 @@
 
 Console.WriteLine("Aprendendo POO");
 
-var meuCarro = new Carro(); //instanciando um objeto
-meuCarro.Ano = 2022;
-meuCarro.Cor = "Preto";
-meuCarro.Modelo = "Fiat Toro";
+var carro = new Carro("Gol", "Preto", 2022);
+var carro2 = new Carro("Uno");
 
-Console.WriteLine(meuCarro.Modelo);
-Console.WriteLine(meuCarro.Cor);
-Console.WriteLine(meuCarro.Ano);
+//Construtor initializer
+var carro3 = new Carro
+{
+  Modelo = "Palio",
+};
 
-var carroDoVizinho = new Carro();
-carroDoVizinho.Ano = 2022;
-carroDoVizinho.Cor = "Vermelho";
-carroDoVizinho.Modelo = "Ford Fusion";
+System.Console.WriteLine(carro.Modelo);
+System.Console.WriteLine(carro2.Modelo);
 
-Console.WriteLine(carroDoVizinho.Modelo);
-Console.WriteLine(carroDoVizinho.Cor);
-Console.WriteLine(carroDoVizinho.Ano);
+// var meuCarro = new Carro(); //instanciando um objeto
+// meuCarro.Ano = 2022;
+// meuCarro.Cor = "Preto";
+// meuCarro.Modelo = "Fiat Toro";
 
-var cursoRedes = new Curso();
-cursoRedes.Materia = "Redes de Computadores";
-cursoRedes.Valor = 199.99;
+// Console.WriteLine(meuCarro.Modelo);
+// Console.WriteLine(meuCarro.Cor);
+// Console.WriteLine(meuCarro.Ano);
 
-var cursoCsharp = new Curso();
-cursoCsharp.Materia = "POO com C#";
-cursoCsharp.Valor = 250.00;
+// var carroDoVizinho = new Carro();
+// carroDoVizinho.Ano = 2022;
+// carroDoVizinho.Cor = "Vermelho";
+// carroDoVizinho.Modelo = "Ford Fusion";
+
+// Console.WriteLine(carroDoVizinho.Modelo);
+// Console.WriteLine(carroDoVizinho.Cor);
+// Console.WriteLine(carroDoVizinho.Ano);
+
+// var cursoRedes = new Curso();
+// cursoRedes.Materia = "Redes de Computadores";
+// cursoRedes.Valor = 199.99;
+
+// var cursoCsharp = new Curso();
+// cursoCsharp.Materia = "POO com C#";
+// cursoCsharp.Valor = 250.00;
 
 //Console.ReadKey(); //espera apertar uma tecla para encerrar o programa
