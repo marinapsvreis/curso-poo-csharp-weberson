@@ -1,0 +1,22 @@
+O que é POO?
+Programação Orientada a Objetos
+
+Trazer comportamentos e estados de forma simples e intuitiva.
+
+Trabalha em cima de 4 pilares:
+1) Herança: A => B (Tudo que tem dentro de A, terá dentro de B)
+2) Polimorfismo: A => B ou C (Cada filho implementa os metodos de maneira diferente)
+3) Encapsulamento: Guardar tudo o que quiser em um determinado lugar para depois ser acessado facilmente.
+4) Abstração: Trazer objetos da vida real para dentro do código (abstraindo).
+
+=========================================================================================================
+
+Como representar um Carro no meu código?
+
+Class / Classe
+Um arquivo que tem instruções de como esse objeto deverá ser construido.
+-> Modelo
+-> Cor 
+-> Ano
+-> Valor
+
