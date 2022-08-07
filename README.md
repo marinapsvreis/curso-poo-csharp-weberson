@@ -1,12 +1,12 @@
-Extensões importantes do VSCode:
-C#
-C# XML Documentation Comments
-C# Snippets
-C# Extensions
+Extensões importantes do VSCode:<br>
+C#<br>
+C# XML Documentation Comments<br>
+C# Snippets<br>
+C# Extensions<br><br>
 
-Comandos importantes:
-dotnet --version
-dotnet
-dotnet new --list
-dotnet new console --name NomeDoArquivo
-dotnet run
+Comandos importantes:<br>
+dotnet --version<br>
+dotnet<br>
+dotnet new --list<br>
+dotnet new console --name NomeDoArquivo<br>
+dotnet run<br>
