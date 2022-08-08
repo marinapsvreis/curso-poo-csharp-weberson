@@ -30,5 +30,19 @@ namespace PrimeiroProjeto
     }
 
     #endregion
+
+    #region Metodos
+
+    public void LigarCarro()
+    {
+      System.Console.WriteLine("Ligando o carro...");
+      System.Console.WriteLine("CARRO LIGADO!");
+    }
+
+    public void TocarBuzina(){
+      System.Console.WriteLine("Buzinando!!!");
+    }
+
+    #endregion
   }
 }

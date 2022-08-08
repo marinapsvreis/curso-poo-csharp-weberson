@@ -20,3 +20,11 @@ Um arquivo que tem instruções de como esse objeto deverá ser construido.
 -> Ano
 -> Valor
 
+=========================================================================================================
+
+Metodos Acessores:
+
+public -> pode ser acessado por qualquer parte do código
+private -> acessado somente pela propria classe
+protected -> somente a propria classe e seus filhos
+
