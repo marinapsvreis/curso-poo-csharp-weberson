@@ -1,0 +1,18 @@
+Historia do sistema.
+
+Fomos contratados para criar um sistema bancário onde fosse possível criar as seguintes questões:
+
+1) Ser possivel criar uma conta corrente. OK
+2) Ser possivel criar uma conta poupanca. OK 
+3) Ser possivel criar uma conta investimento. OK 
+4) Ser possivel efetuar um depósito. OK 
+5) Ser possivele efetuar um saque. OK 
+6) Ser possivel efetuar uma transferencia. OK 
+7) Ser possivel consultar saldo. OK 
+8) Não deve ser possível criar uma conta bancária sem tipo. OK
+9) Cada tipo de conta possa implementar de forma diferente o metodo Imprimir Extrato. OK
+10) Ser possivel visualizar as movimentações bancárias.
+  10.1) Uma classe que represente a movimentação. OK
+  10.2) Lista para armazenas essas movimentações. OK
+  10.3) Uma forma simples de saber qual o tipo de movimentação. OK
+  10.4) Um layout para apresentar a movimentação quando for pedida. OK
