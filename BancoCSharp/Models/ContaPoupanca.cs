@@ -26,6 +26,8 @@ namespace BancoCSharp.Models
 
       Console.WriteLine("Saldo atual: R$" + Saldo);
       Console.WriteLine();
+      Console.WriteLine("Limite atual disponível: R$" + LimiteDisponivel);
+      Console.WriteLine();
       Console.WriteLine("*******************************");
       Console.WriteLine("******** Fim do extrato *******");
       Console.WriteLine("*******************************");

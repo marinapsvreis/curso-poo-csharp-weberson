@@ -8,6 +8,8 @@ namespace BancoCSharp.Enums
 
     DEPOSITO,
 
-    TRANSFERENCIA
+    TRANSFERENCIA,
+
+    CHEQUE_ESPECIAL
   }
 }

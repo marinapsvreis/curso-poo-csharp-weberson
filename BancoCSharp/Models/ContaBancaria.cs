@@ -8,9 +8,12 @@ namespace BancoCSharp.Models
     #region Atributos
     public Titular Titular { get; set; }
     public double Saldo { get; private set; }
+    public double LimiteDisponivel { get; private set; }
+    public double SaldoFinal => Saldo + LimiteDisponivel;
     public DateTime DataAbertura { get; private set; }
     protected List<Movimentacao> Movimentacoes { get; set; }
     protected readonly double VALOR_MINIMO = 10.0;
+    protected readonly double LIMITE = 100.0;
 
     #endregion
 
@@ -19,6 +22,7 @@ namespace BancoCSharp.Models
     {
       Titular = titular;
       Saldo = 0;
+      LimiteDisponivel = LIMITE;
       DataAbertura = DateTime.Now;
       Movimentacoes = new List<Movimentacao>()
       {
@@ -30,6 +34,7 @@ namespace BancoCSharp.Models
     {
       Titular = titular;
       Saldo = saldo;
+      LimiteDisponivel = LIMITE;
       DataAbertura = DateTime.Now;
 
       Movimentacoes = new List<Movimentacao>()
@@ -48,8 +53,24 @@ namespace BancoCSharp.Models
         throw new Exception("O valor mínimo para deposito é " + VALOR_MINIMO);
       }
 
-      Saldo += valor;
-      Movimentacoes.Add(new Movimentacao(TipoMovimentacao.DEPOSITO, valor));
+      if (LimiteDisponivel < LIMITE)
+      {
+        var limiteFaltante = LIMITE - LimiteDisponivel;
+        var depositoExtra = valor - limiteFaltante;
+
+        if (depositoExtra > 0)
+        {
+          Saldo += depositoExtra;
+          LimiteDisponivel = LIMITE;
+          Movimentacoes.Add(new Movimentacao(TipoMovimentacao.DEPOSITO, valor));
+        }
+        else
+        {
+          Saldo = 0;
+          LimiteDisponivel += valor;
+          Movimentacoes.Add(new Movimentacao(TipoMovimentacao.DEPOSITO, valor));
+        }
+      }
     }
 
     public double Sacar(double valor)
@@ -60,12 +81,28 @@ namespace BancoCSharp.Models
       }
       else if (Saldo < valor)
       {
-        throw new Exception("O seu saldo é insuficiente para efetuar o saque. Seu saldo atual é de: R$ " + Saldo);
-      }
+        if (SaldoFinal < valor)
+        {
+          throw new Exception("Você não possui saldo nem limite para efetuar esse saque, seu saldo + limite atual é R$ " + SaldoFinal);
+        }
+        var valorExtra = valor - Saldo;
+        Saldo = 0;
+        LimiteDisponivel -= valorExtra;
 
-      Saldo -= valor;
-      Movimentacoes.Add(new Movimentacao(TipoMovimentacao.SAQUE, valor));
-      return valor;
+        Console.WriteLine("Você efetuou uma retirada no seu limite no valor de R$: " + valorExtra + " e será cobrada uma taxa de 1% ao dia sobre esse valor");
+        Console.WriteLine("Resumo de saldo na sua conta é de R$: " + (0 - valorExtra));
+        Console.WriteLine();
+
+        Movimentacoes.Add(new Movimentacao(TipoMovimentacao.SAQUE, (valor - valorExtra)));
+        Movimentacoes.Add(new Movimentacao(TipoMovimentacao.CHEQUE_ESPECIAL, valorExtra));
+        return valor;
+      }
+      else
+      {
+        Saldo -= valor;
+        Movimentacoes.Add(new Movimentacao(TipoMovimentacao.SAQUE, valor));
+        return valor;
+      }
     }
 
     public void Transferir(ContaBancaria contaDestino, double valor)
@@ -76,11 +113,28 @@ namespace BancoCSharp.Models
       }
       else if (Saldo < valor)
       {
-        throw new Exception("O seu saldo é insuficiente para realizar a transferência. Seu saldo atual é de: R$ " + Saldo);
+        if (SaldoFinal < valor)
+        {
+          throw new Exception("Você não possui saldo nem limite para efetuar essa transferencia, seu saldo + limite atual é R$ " + SaldoFinal);
+        }
+        var valorExtra = valor - Saldo;
+        Saldo = 0;
+        LimiteDisponivel -= valorExtra;
+
+        contaDestino.Depositar(valor);
+        Movimentacoes.Add(new Movimentacao(TipoMovimentacao.TRANSFERENCIA, (valor - valorExtra)));
+        Movimentacoes.Add(new Movimentacao(TipoMovimentacao.CHEQUE_ESPECIAL, valorExtra));
+
+        Console.WriteLine("Você efetuou uma retirada no seu limite no valor de R$: " + valorExtra + " e será cobrada uma taxa de 1% ao dia sobre esse valor");
+        Console.WriteLine("Resumo de saldo na sua conta é de R$: " + (0 - valorExtra));
+        Console.WriteLine();
       }
-      contaDestino.Depositar(valor);
-      Saldo -= valor;
-      Movimentacoes.Add(new Movimentacao(TipoMovimentacao.TRANSFERENCIA, valor));
+      else
+      {
+        contaDestino.Depositar(valor);
+        Saldo -= valor;
+        Movimentacoes.Add(new Movimentacao(TipoMovimentacao.TRANSFERENCIA, valor));
+      }
     }
 
     //abstract obriga todo mundo a implementar
@@ -90,5 +144,5 @@ namespace BancoCSharp.Models
       Console.WriteLine("Imprimindo extrato da Conta!");
     }
     #endregion
-  };
-}
+  }
+};

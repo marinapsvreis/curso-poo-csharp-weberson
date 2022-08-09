@@ -18,7 +18,7 @@ namespace BancoCSharp.Models
 
     public override string ToString()
     {
-      var valor = (this.TipoMovimentacao == TipoMovimentacao.SAQUE || this.TipoMovimentacao == TipoMovimentacao.TRANSFERENCIA) ? "-R$ " + Valor : " R$ " + Valor;
+      var valor = (this.TipoMovimentacao == TipoMovimentacao.DEPOSITO || this.TipoMovimentacao == TipoMovimentacao.ABERTURA_CONTA) ? "R$ " + Valor : " -R$ " + Valor;
       return $"{DataHoraMovimentacao}hs | {TipoMovimentacao} | {valor}";
     }
   }
