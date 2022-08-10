@@ -55,8 +55,9 @@ try
   // Console.WriteLine("Extrato da Conta 3:");
   // conta03.ImprimirExtrato();
 
-  //conta04.Sacar(550);
-  conta04.Transferir(conta05, 550);
+  conta04.Sacar(550);
+  conta04.Depositar(200);
+  //conta04.Transferir(conta05, 550);
 }
 catch (System.Exception ex)
 {

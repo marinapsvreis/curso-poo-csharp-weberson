@@ -52,12 +52,10 @@ namespace BancoCSharp.Models
       {
         throw new Exception("O valor mínimo para deposito é " + VALOR_MINIMO);
       }
-
-      if (LimiteDisponivel < LIMITE)
+      else if (LimiteDisponivel < LIMITE)
       {
         var limiteFaltante = LIMITE - LimiteDisponivel;
         var depositoExtra = valor - limiteFaltante;
-
         if (depositoExtra > 0)
         {
           Saldo += depositoExtra;
@@ -70,6 +68,11 @@ namespace BancoCSharp.Models
           LimiteDisponivel += valor;
           Movimentacoes.Add(new Movimentacao(TipoMovimentacao.DEPOSITO, valor));
         }
+      }
+      else
+      {
+        Saldo += valor;
+        Movimentacoes.Add(new Movimentacao(TipoMovimentacao.DEPOSITO, valor));
       }
     }
 
