@@ -1,0 +1,12 @@
+Você foi contratado para criar um sistema simples de hotelaria, para isso é necessário atender as seguintes situações:
+
+1)No Hotel é preciso representar o Cliente, o Gerente, a Camareira e a Recepcionista. OK
+2)Todas as entidades do tipo pessoa tem que ter, nome, CPF e telefone. OK
+3)Toda camareira tem que saber arrumar a cama e limpar o quarto. OK
+4)Toda recepcionista tem que saber atender o telefone e falar o básico de inglês. OK
+
+5)Todo gerente tem que saber tudo que uma camareira faz e tudo que uma recepcionista faz. OK
+6)Deve ter uma Entidade Hotel. OK
+
+7)Criar serviço de RH terceirizado OK
+8)Deve saber contratar Camareiras, Recepcionistas e Promover Gerentes. OK
