@@ -1,0 +1,34 @@
+Objetivo:
+
+*** Simular uma API para sistema de Pizzaria Delivery ***
+
+* Entender o minimo necessário sobre o que seria uma API
+* Entender as camadas da API
+* Construir algumas entidades da camadas
+
+1) Cliente (id, Nome, Telefone, Lista de endereços) OK
+2) Pizza (id, TipoPizza, TipoBorda, Lista de Sabores, Valor) OK 
+3) Sabor (id, Nome, Valor) OK 
+4) Pedido (id, DataHora, Cliente, Lista de pizzas, Lista de Sabors, Valor Total do Pedido) OK
+
+*Camadas:
+Padrão MVC
+1) Model => Classes, nossas entidades da regra de negócio. OK
+2) View => Tudo aquilo que recebo e envio ao usuário.
+3) Controller => Controlador, onde inicia a regra de negócio da aplicação. OK
+4) Respository => Simular o banco de dados. OK 
+
+*Relatórios:
+1) Quantas pizzas eu vendi em um dia.
+2) Qual foi o faturamento.
+3) Qual foi a pizza mais vendida.
+
+Regras:
+
+camelCase: Sempre usar em variáveis, objetos, parametros de função, parametros de construtor, parametros de classe.
+PascalCase: Sempre usar em Classes, Contrutores, Métodos, Atributos/Propriedades.
+kibab-case: não é usado em csharp (marina-portugal).
+snake-case: marina_portugal, usado apenas para constantes com todas as letras maisculas.
+
+***Documentar sempre as interfaces***
+
